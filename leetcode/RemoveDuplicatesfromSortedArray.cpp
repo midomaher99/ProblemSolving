@@ -3,15 +3,14 @@ class Solution
 public:
     int removeDuplicates(vector<int> &nums)
     {
-        int length = nums.size();
-        int k = length;
-        int iterator = 0;
-        for (iterator = length - 2; iterator >= 0; iterator--)
+        int k = 1;
+
+        for (int iterator = 1; iterator < nums.size(); iterator++)
         {
-            if (nums[iterator] == nums[iterator + 1])
+            if (nums[iterator] != nums[iterator - 1])
             {
-                nums.erase(nums.begin() + iterator);
-                k--;
+                nums[k] = nums[iterator];
+                k++;
             }
         }
         return k;
